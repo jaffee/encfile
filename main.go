@@ -11,16 +11,19 @@ import (
 	"github.com/pkg/errors"
 )
 
+// Main holds the command line options for encfile.
 type Main struct {
-	Filename string `help:"filename to encrypt or decrypt"`
-	Decrypt  bool   `help:"set to decrypt - otherwise, encrypt"`
-	Key      string `help:"key for encryption/decryption. Must be 16, 24, or 32 bytes to select AES-128, AES-192, or AES-256."`
+	Filename string `help:"Name of file to encrypt or decrypt."`
+	Decrypt  bool   `help:"Set for decryption - otherwise, encrypt."`
+	Key      string `help:"Key for encryption/decryption. Must be 16, 24, or 32 bytes to select AES-128, AES-192, or AES-256."`
 }
 
+// NewMain gets a new Main with the default options.
 func NewMain() *Main {
 	return &Main{}
 }
 
+// Run runs the file encryption/decryption utiltity.
 func (m *Main) Run() error {
 	fname := m.Filename
 	f, err := os.Open(fname)
@@ -54,6 +57,7 @@ func (m *Main) Run() error {
 }
 
 func main() {
+	// Set up flags and run Main.
 	err := commandeer.Run(NewMain())
 	if err != nil {
 		log.Fatal(err)
