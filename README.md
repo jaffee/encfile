@@ -7,5 +7,18 @@ I wanted to create an encrypted image of a directory, but Disk Utility on my Mac
 # install
 Should be as easy as `go get github.com/jaffee/encfile`. 
 
-# contributors
+# usage 
+
+```
+$ encfile -h
+Usage of encfile:
+  -decrypt
+    	set to decrypt - otherwise, encrypt
+  -filename string
+    	filename to encrypt or decrypt
+  -key string
+    	key for encryption/decryption. Must be 16, 24, or 32 bytes to select AES-128, AES-192, or AES-256.
+```
+
+# contributions
 Sure, send a PR. Would be cool if you could read the key from a file rather than having to pass it in at the command line. *cough* hint *cough*
